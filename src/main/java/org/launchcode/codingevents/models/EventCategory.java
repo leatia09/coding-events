@@ -2,21 +2,21 @@ package org.launchcode.codingevents.models;
 
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class EventCategory {
+public class EventCategory extends AbstractEntity{
 
-    @Id
-    @GeneratedValue
-    private int id;
 
+    @NotBlank(message = "Name is required")
+    @NotNull(message = "Error cannot be null, Try again")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
 
-    public EventCategory(@Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters") String name) {
+    public EventCategory(String name){
+        this.name = name;
 
     }
 
@@ -30,8 +30,9 @@ public class EventCategory {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public String toString() {
+        return name;
     }
 
 }

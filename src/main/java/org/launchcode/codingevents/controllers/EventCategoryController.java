@@ -38,7 +38,7 @@ public String renderCreateEventCategoryForm(Model model) {
 }
 
 @PostMapping("create")
-public String processCreateEventCategoryForm(@Valid @ModelAttribute EventCategory eventCategory,
+public String processCreateEventCategoryForm(@Valid @ModelAttribute EventCategory newEventCategory,
                                              Errors errors, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Create Category");
@@ -46,7 +46,7 @@ public String processCreateEventCategoryForm(@Valid @ModelAttribute EventCategor
             return "eventCategories/create";
         }
 
-        eventCategoryRepository.save(eventCategory);
+        eventCategoryRepository.save(newEventCategory);
         return "redirect:";
     }
 }

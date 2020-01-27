@@ -3,7 +3,9 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<header th:replace="fragments :: header"></header>
+<nav th:replace="fragments :: header"></nav>
+
+<p th:unless="${events} and ${events.size()}">No Events</p>
 
 <table class="table table-striped">
     <thead>
@@ -12,6 +14,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Contact Email</th>
+            <th>Type</th>
         </tr>
     </thead>
     <tr th:each="event : ${events}">
